@@ -6,7 +6,7 @@ Let someone call your score in your [autodarts.io](https://github.com/autodarts/
 
 1. Log-in to your raspberry pi via ssh
 1. Go to your home-directory: `cd ~`
-1. Install `docker`:
+1. Install `docker` (we use docker to easily start a webserver on which we run the caller-app):
     1. `curl -fsSL https://get.docker.com | sh`
     1. Check if installation was successful by running a hello-world image `sudo docker run --rm armhf/hello-world`
     - If you see no errors everything should be fine
