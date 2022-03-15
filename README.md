@@ -1,6 +1,6 @@
 # autodarts-caller
 
-Let Russ Bray call your score in your [autodarts.io](https://github.com/autodarts/docs)-setup.
+Let someone call your score in your [autodarts.io](https://github.com/autodarts/docs)-setup. 
 
 ## Installation
 
@@ -17,7 +17,11 @@ Let Russ Bray call your score in your [autodarts.io](https://github.com/autodart
     1. `cd autodarts-caller/`
     1. Make run-script executable: `chmod +x run_autodarts_caller.sh`
 1. Add sounds to `autodarts-caller/sounds/`:
+    1. Either you create sounds by yourself or you use existing soundpacks (e.g. sounds from Russ Bray)
+        - Due to copyright issues the sounds are not included in this repository but you can find them in various dart-communities
+        - Example (Russ Bray): https://www.dartn-forum.de/thread/129-russ-bray-sounds-f%C3%BCr-dartpro-software/?postID=473437#post473437
     1. Requirement: all sound files must be .mp3
+        - if the sounds are in a different format they have to be converted to .mp3
     1. Possible sounds:
         - 1.mp3 - 180.mp3
         - 0.mp3 ("no score")
@@ -43,6 +47,7 @@ Let Russ Bray call your score in your [autodarts.io](https://github.com/autodart
     - you can copy the ip-address from the board-manager url
     - e.g. `192.168.178.73`
 1. Click on `Connect`
+1. Throw three darts and if everything worked you should hear your score
 
 ## Drawbacks
 
