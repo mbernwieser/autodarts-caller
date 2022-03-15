@@ -1,0 +1,50 @@
+<div>
+  <label>
+    IP:
+    <input
+      value={{this.ip}}
+      placeholder="192.168.178.73"
+      {{on 'input' (pick 'target.value' (fn (mut this.ip)))}}
+    />
+  </label>
+  <button
+    type="button"
+    disabled={{or
+      this.websocket.isInitializing
+      this.websocket.socket
+      (not this.ip)
+    }}
+    {{on 'click' this.connect}}
+  >
+    {{#if this.websocket.isInitializing}}
+      Connecting...
+    {{else if this.websocket.socket}}
+      Connected
+    {{else}}
+      Connect
+    {{/if}}
+  </button>
+  <button
+    type="button"
+    disabled={{not this.websocket.socket}}
+    {{on 'click' this.websocket.disconnect}}
+  >
+    {{#if this.websocket.isInitializing}}
+      Cancel
+    {{else}}
+      Disconnect
+    {{/if}}
+  </button>
+</div>
+<div>
+  <p>
+    Play additional sounds:
+  </p>
+  <div>
+    {{#each this.additionalSoundButtons as |btn|}}
+      <button type="button" {{on 'click' (fn this.playAdditionalSound btn)}}>
+        {{btn.label}}
+      </button>
+    {{/each}}
+  </div>
+</div>
