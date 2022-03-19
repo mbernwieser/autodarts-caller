@@ -1,6 +1,7 @@
 // ---------------- CHANGE THIS TO THE NAME OF YOUR PLUGIN -------------------
 const pluginName = 'template';
 
+// eslint-disable-next-line no-unused-vars
 window.addEventListener('THROW', (event) => {
   // if the user disabled the plugin via the web-ui exit directly
   if (!window.AUTODARTS_CALLER_PLUGINS[pluginName]) {
