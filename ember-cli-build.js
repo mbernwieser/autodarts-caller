@@ -7,6 +7,10 @@ module.exports = function (defaults) {
     fingerprint: {
       exclude: ['plugins/*'],
     },
+    'ember-cli-terser': {
+      enabled: true,
+      exclude: ['plugins/template.js'],
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated
