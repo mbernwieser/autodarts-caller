@@ -1,8 +1,8 @@
 # autodarts-caller
 
-Let someone call your score in your [autodarts.io](https://github.com/autodarts/docs)-setup. 
+Caller-functionality for your [autodarts.io](https://github.com/autodarts/docs)-setup. You can also extend the functionality with [custom plugins](#extending-with-plugins).
 
-## Installation
+## Installation (in this case on a Rapsberry-Pi)
 
 ### Install docker and autodarts-caller
 1. Log-in to your raspberry pi via ssh
@@ -46,7 +46,7 @@ Let someone call your score in your [autodarts.io](https://github.com/autodarts/
         - `autodarts-caller/sounds/2.mp3`
         - `...`
 
-## Running
+## Running 
 1. Start `autodarts` (if not already running):
     - `autodarts`
 1. Run `autodarts-caller` install-script (maybe in a second terminal window/tab):
@@ -55,7 +55,10 @@ Let someone call your score in your [autodarts.io](https://github.com/autodarts/
 1. **After the first successful run you can start/stop the autodarts-caller with:**
     - `sudo docker start autodarts-caller`
     - `sudo docker stop autodarts-caller`
-1. Open a browser and go to: `<ip-of-your-raspberry-pi>:8080`
+
+## Usage
+1. Open a browser on a device from where you want to play the sounds on
+1. Go to: `<ip-of-your-raspberry-pi>:8080`
     - you can copy the ip-address from the board-manager url
     - e.g. `192.168.178.73:8080`
 1. Now you should see the Autodarts-Caller web-ui (see screenshot below)
@@ -83,7 +86,7 @@ tbd
 
 ## Extending with plugins
 
-You can write your own plugins in JavaScript to extend the functionality of this tool. Maybe you want to play your favorite song if you score yet another S1 | S1 | S1 or activate some LEDs if you finally make the 180.
+You can write your own plugins in JavaScript to extend the functionality of this tool. Maybe you want to play your favorite song if you score yet another S1 | S1 | S1 or activate some LEDs if you finally hit the 180.
 
 To do that you just have to:
 1. Copy the plugin-template `plugins/template.js` to `plugins/your-custom-plugin.js`
@@ -94,7 +97,7 @@ To do that you just have to:
 ### Adding logic to your plugins
 
 All information about the throw can be found in the throw-event, just take a look at the information via `console.log(event)`. From here you can do whatever you want:
-- call other APIs (e.g. some LED system) with a simple fetch-call [JS-Docs](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+- call other APIs (e.g. some LED system) with a simple fetch-call: [JS-Docs](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 - you can call the built-in sound-service
     - `event.soundService.playAudio(filename, duration = null);`
 - you can call the built-in notification-service
@@ -111,5 +114,6 @@ This simple web-app is built with Ember.js. The main-logic (= handling of websoc
 - Clone project
 - Update files in `app/`
 - Build project: `ember build --environment=production`
-- Created folder `autodarts-caller/` can be transfered to raspberry-pi 
+- Zip built files: `zip -r autodarts-caller.zip autodarts-caller`
+- Created zip-file `autodarts-caller.zip` can be transfered to raspberry-pi 
 - Then follow installation guide starting from: "Download and unzip..." (Replace zip-file with your built folder)
