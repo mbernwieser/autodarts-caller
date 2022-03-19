@@ -17,7 +17,7 @@ Let someone call your score in your [autodarts.io](https://github.com/autodarts/
     1. `unzip -o autodarts-caller.zip -d .`
 1. Go to the `autodarts-caller`-directory you just created:
     - `cd autodarts-caller/`
-1. Make run-script executable: 
+1. Make installation-script executable: 
     - `chmod +x install_and_run_autodarts_caller.sh`
 
 ### Add caller sounds 
@@ -25,14 +25,13 @@ Let someone call your score in your [autodarts.io](https://github.com/autodarts/
 1. Either you create sounds by yourself or you use existing soundpacks (e.g. sounds from Russ Bray)
     - Due to copyright issues the sounds are not included in this repository but you can find them in various dart-communities
     - Example (Russ Bray): https://www.dartn-forum.de/thread/129-russ-bray-sounds-f%C3%BCr-dartpro-software/?postID=473437#post473437
-    - Darts Gondel (2€): https://www.dartzentrum-augsburg.de/produkt/darts-gondel-01-caller-sound-dateien 
+    - Darts Gondel (German sounds for 2€): https://www.dartzentrum-augsburg.de/produkt/darts-gondel-01-caller-sound-dateien 
 1. Requirement: all sound files must be in .mp3 format
-    - if the sounds are in a different format they have to be converted to .mp3
+    - if the sounds are in a different format they have to be converted to .mp3 first
 1. Possible sounds:
     - 1.mp3 - 180.mp3
     - 0.mp3 ("no score")
     - gameon.mp3 ("gameon" on succesful connect & additional sound buttons)
-    - 1st.mp3 ("game shot and the first leg" in additional sound buttons)
 1. An easy way to add the sounds is to use a programm like `FileZilla`:
     1. Download and install `FileZilla` on the system from where you connect to the raspberry-pi
     1. Open `FileZilla` and connect to your raspberry-pi with the following parameters:
@@ -50,9 +49,10 @@ Let someone call your score in your [autodarts.io](https://github.com/autodarts/
 ## Running
 1. Start `autodarts` (if not already running):
     - `autodarts`
-1. Run `autodarts-caller` (maybe in a second terminal window/tab):
+1. Run `autodarts-caller` install-script (maybe in a second terminal window/tab):
     - `./install_and_run_autodarts_caller.sh`
-1. After the first successful run you can also start/stop the autodarts-caller with:
+    - if everything's working you should see some log-output but no errors
+1. **After the first successful run you can start/stop the autodarts-caller with:**
     - `sudo docker start autodarts-caller`
     - `sudo docker stop autodarts-caller`
 1. Open a browser and go to: `<ip-of-your-raspberry-pi>:8080`
