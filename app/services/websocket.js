@@ -72,18 +72,22 @@ export default class WebsocketService extends Service {
       return;
     }
 
+    if (throws.length === 1) {
+      // reset pointsCalled to prevent multiple calls because of an aborted takeout
+      this.pointsCalled = false;
+    }
+
+    if (this.pointsCalled) {
+      return;
+    }
+
     // create and dispatch event which can be handled in plugins
     const pluginEvent = this.pluginService.createEvent('THROW');
     pluginEvent.message = message;
     pluginEvent.throws = throws;
     window.dispatchEvent(pluginEvent);
 
-    if (throws.length === 1) {
-      // reset pointsCalled to prevent multiple calls because of an aborted takeout
-      this.pointsCalled = false;
-    }
-
-    if (this.pointsCalled || throws.length !== 3) {
+    if (throws.length !== 3) {
       return;
     }
 
