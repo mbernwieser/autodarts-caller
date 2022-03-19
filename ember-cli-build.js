@@ -9,7 +9,7 @@ module.exports = function (defaults) {
     },
     'ember-cli-terser': {
       enabled: true,
-      exclude: ['plugins/template.js'],
+      exclude: ['plugins/*'],
     },
   });
 

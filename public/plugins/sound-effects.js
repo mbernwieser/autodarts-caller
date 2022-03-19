@@ -12,19 +12,19 @@
     const lastThrow = event.throws[event.throws.length - 1];
 
     if (lastThrow.segment.multiplier === 1) {
-      event.soundService.playAudio('sound-effect-plugin/single.mp3');
+      event.soundService.playAudio('sound-effect-plugin/single');
     }
 
     if (lastThrow.segment.multiplier === 2) {
-      event.soundService.playAudio('sound-effect-plugin/double.mp3');
+      event.soundService.playAudio('sound-effect-plugin/double');
     }
 
     if (lastThrow.segment.multiplier === 3) {
-      event.soundService.playAudio('sound-effect-plugin/triple.mp3');
+      event.soundService.playAudio('sound-effect-plugin/triple');
     }
 
     if (lastThrow.segment.multiplier === 0) {
-      event.soundService.playAudio('sound-effect-plugin/miss.mp3');
+      event.soundService.playAudio('sound-effect-plugin/miss');
     }
   });
 
