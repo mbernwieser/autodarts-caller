@@ -3,8 +3,9 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class WebsocketService extends Service {
+  @service('plugin') pluginService;
+  @service('sound') soundService;
   @service notifications;
-  @service sound;
 
   @tracked socket = null;
   @tracked isInitializing = false;
@@ -22,8 +23,6 @@ export default class WebsocketService extends Service {
 
     this.socket = new WebSocket(url);
 
-    console.log('Initializing...');
-
     this.socket.addEventListener('open', (event) => {
       this.onConnectionOpen(event);
     });
@@ -35,10 +34,13 @@ export default class WebsocketService extends Service {
     this.socket.addEventListener('error', (event) => {
       console.log('WebSocket error: ', event);
 
+      // catch error during initialization
       if (this.isInitializing) {
         setTimeout(() => {
           this.disconnect();
-          this.notifications.error("Verbindung fehlgeschlagen! Falsche IP oder Autodarts nicht gestartet?");
+          this.notifications.error(
+            'Verbindung fehlgeschlagen! Falsche IP oder Autodarts nicht gestartet?'
+          );
         }, 1000);
       }
     });
@@ -58,7 +60,7 @@ export default class WebsocketService extends Service {
   onConnectionOpen() {
     this.isInitializing = false;
 
-    this.sound.playAudio('gameon');
+    this.soundService.playAudio('gameon');
   }
 
   onMessage(event) {
@@ -66,9 +68,15 @@ export default class WebsocketService extends Service {
 
     const { throws } = message.data;
 
-    if (message.type !== 'state') {
+    if (message.type !== 'state' || message.data.event !== 'Throw detected') {
       return;
     }
+
+    // create and dispatch event which can be handled in plugins
+    const pluginEvent = this.pluginService.createEvent('THROW');
+    pluginEvent.message = message;
+    pluginEvent.throws = throws;
+    window.dispatchEvent(pluginEvent);
 
     if (throws.length === 1) {
       // reset pointsCalled to prevent multiple calls because of an aborted takeout
@@ -84,9 +92,7 @@ export default class WebsocketService extends Service {
       0
     );
 
-    console.log(`Russ Bray: ${points}`);
-
-    this.sound.playAudio(points);
+    this.soundService.playAudio(points);
     this.pointsCalled = true;
   }
 }

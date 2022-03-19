@@ -3,19 +3,22 @@
     Autodarts-IP:
     <input
       value={{this.ip}}
-      placeholder="192.168.178.73"
+      placeholder="xxx.xxx.xxx.xxx"
       readonly={{this.inputIsDisabled}}
       {{on 'input' (pick 'target.value' (fn (mut this.ip)))}}
     />
+    <small class="">
+      Enter the IP-address of the device where autodarts is running. You can copy the ip-address from the board-manager url.
+    </small>
   </label>
   <button
     type="button"
-    disabled={{this.inputIsDisabled}}
+    disabled={{this.connectButtonIsDisabled}}
     {{on 'click' this.connect}}
   >
-    {{#if this.websocket.isInitializing}}
+    {{#if this.websocketService.isInitializing}}
       ⏳ Connecting...
-    {{else if this.websocket.socket}}
+    {{else if this.websocketService.socket}}
       ✅ Connected
     {{else}}
       🗝 Connect
@@ -23,10 +26,10 @@
   </button>
   <button
     type="button"
-    disabled={{not this.websocket.socket}}
-    {{on 'click' this.websocket.disconnect}}
+    disabled={{not this.websocketService.socket}}
+    {{on 'click' this.websocketService.disconnect}}
   >
-    {{#if this.websocket.isInitializing}}
+    {{#if this.websocketService.isInitializing}}
       ❌ Cancel
     {{else}}
       🚫 Disconnect
@@ -44,5 +47,39 @@
         {{btn.label}}
       </button>
     {{/each}}
+  </div>
+</section>
+<section class="container">
+  <p>
+    Plugins:
+  </p>
+  <div>
+    <fieldset>
+      {{#each this.pluginService.registeredPlugins as |pluginName|}}
+        <label for="switch">
+          <input
+            type="checkbox"
+            id="switch"
+            name="switch"
+            role="switch"
+            checked={{get this.pluginService.pluginStates pluginName}}
+            {{on 'change' (fn this.pluginService.togglePlugin pluginName)}}
+          />
+          {{pluginName}}
+        </label>
+      {{else}}
+        <blockquote>
+          No plugins registered yet! See
+          <a
+            href="https://github.com/mbernwieser/autodarts-caller#extending-with-plugins"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Documentation
+          </a>
+          for more information.
+        </blockquote>
+      {{/each}}
+    </fieldset>
   </div>
 </section>
