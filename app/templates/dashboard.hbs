@@ -1,27 +1,24 @@
-<div>
+<main class="container">
   <label>
-    IP:
+    Autodarts-IP:
     <input
       value={{this.ip}}
       placeholder="192.168.178.73"
+      readonly={{this.inputIsDisabled}}
       {{on 'input' (pick 'target.value' (fn (mut this.ip)))}}
     />
   </label>
   <button
     type="button"
-    disabled={{or
-      this.websocket.isInitializing
-      this.websocket.socket
-      (not this.ip)
-    }}
+    disabled={{this.inputIsDisabled}}
     {{on 'click' this.connect}}
   >
     {{#if this.websocket.isInitializing}}
-      Connecting...
+      ⏳ Connecting...
     {{else if this.websocket.socket}}
-      Connected
+      ✅ Connected
     {{else}}
-      Connect
+      🗝 Connect
     {{/if}}
   </button>
   <button
@@ -30,21 +27,22 @@
     {{on 'click' this.websocket.disconnect}}
   >
     {{#if this.websocket.isInitializing}}
-      Cancel
+      ❌ Cancel
     {{else}}
-      Disconnect
+      🚫 Disconnect
     {{/if}}
   </button>
-</div>
-<div>
+</main>
+<section class="container">
   <p>
     Play additional sounds:
   </p>
   <div>
     {{#each this.additionalSoundButtons as |btn|}}
       <button type="button" {{on 'click' (fn this.playAdditionalSound btn)}}>
+        🎤
         {{btn.label}}
       </button>
     {{/each}}
   </div>
-</div>
+</section>

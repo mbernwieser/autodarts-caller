@@ -3,6 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class WebsocketService extends Service {
+  @service notifications;
   @service sound;
 
   @tracked socket = null;
@@ -33,6 +34,13 @@ export default class WebsocketService extends Service {
 
     this.socket.addEventListener('error', (event) => {
       console.log('WebSocket error: ', event);
+
+      if (this.isInitializing) {
+        setTimeout(() => {
+          this.disconnect();
+          this.notifications.error("Verbindung fehlgeschlagen! Falsche IP oder Autodarts nicht gestartet?");
+        }, 1000);
+      }
     });
   }
 

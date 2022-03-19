@@ -17,6 +17,11 @@ module.exports = function (environment) {
       },
     },
 
+    'ember-cli-notifications': {
+      autoClear: true,
+      clearDuration: 3000,
+    },
+
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
