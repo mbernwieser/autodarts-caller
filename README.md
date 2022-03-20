@@ -26,7 +26,7 @@ The following guide is designed for the raspberry-pi but this is no hard require
 
 ### Add caller sounds 
 1. Sound files have to be added to `autodarts-caller/sounds/`
-1. Either you create sounds by yourself or you use existing soundpacks (e.g. sounds from Russ Bray)
+1. Either you create sounds by yourself or you use existing soundpacks
     - Due to copyright issues the sounds are not included in this repository but you can find them in various dart-communities
     - Example (Russ Bray): https://www.dartn-forum.de/thread/129-russ-bray-sounds-f%C3%BCr-dartpro-software/?postID=473437#post473437
     - Darts Gondel (German sounds for 2€): https://www.dartzentrum-augsburg.de/produkt/darts-gondel-01-caller-sound-dateien 
