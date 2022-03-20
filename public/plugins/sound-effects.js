@@ -9,6 +9,7 @@
       return;
     }
 
+    // --------------- ADD YOUR CUSTOM LOGIC HERE -------------------
     const lastThrow = event.throws[event.throws.length - 1];
 
     if (lastThrow.segment.multiplier === 1) {
