@@ -18,7 +18,7 @@
   // -------------- DO NOT CHANGE ANYTHING BELOW HERE ---------------------
 
   window.addEventListener('INIT_PLUGINS', () => {
-    let enabled = true;
+    let enabled = false;
 
     if (`AUTODARTS_CALLER_PLUGINS_${pluginName}` in localStorage) {
       enabled =
