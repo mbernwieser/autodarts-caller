@@ -94,7 +94,7 @@ To do that you just have to:
 1. Add your custom logic in `plugins/your-custom-plugin.js`
 1. ... if you've created a cool plugin, don't forget to share it with the Autodarts-Community
 
-You can also orientate on the pre-installed `Sound Effects`-plugin which plays sounds in 8-bit style after each throw.
+You can also orientate on the pre-installed [Sound Effects-plugin](public/plugins/sound-effects.js) which plays sounds in 8-bit style after each throw.
 
 ### Adding logic to your plugins
 
