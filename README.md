@@ -2,10 +2,12 @@
 
 Caller-functionality for your [autodarts.io](https://github.com/autodarts/docs)-setup. You can also extend the functionality with [custom plugins](#extending-with-plugins).
 
-## Installation (in this case on a Rapsberry-Pi)
+## Installation
+
+The following guide is designed for the raspberry-pi but this is no hard requirement.
 
 ### Install docker and autodarts-caller
-1. Log-in to your raspberry pi via ssh
+1. Log-in to your raspberry-pi via ssh
 1. Go to your home-directory: `cd ~`
 1. Install `docker` (we use docker to easily start a webserver on which we run the caller-app):
     - `curl -fsSL https://get.docker.com | sh`
@@ -18,7 +20,9 @@ Caller-functionality for your [autodarts.io](https://github.com/autodarts/docs)-
 1. Go to the `autodarts-caller`-directory you just created:
     - `cd autodarts-caller/`
 1. Make installation-script executable: 
-    - `chmod +x install_and_run_autodarts_caller.sh`
+    - `chmod +x install_autodarts_caller.sh`
+1. Run `autodarts-caller` install-script (maybe in a second terminal window/tab):
+    - `./install_autodarts_caller.sh`
 
 ### Add caller sounds 
 1. Sound files have to be added to `autodarts-caller/sounds/`
@@ -32,29 +36,29 @@ Caller-functionality for your [autodarts.io](https://github.com/autodarts/docs)-
     - 1.mp3 - 180.mp3
     - 0.mp3 ("no score")
     - gameon.mp3 ("gameon" on succesful connect & additional sound buttons)
-1. An easy way to add the sounds is to use a programm like `FileZilla`:
-    1. Download and install `FileZilla` on the system from where you connect to the raspberry-pi
-    1. Open `FileZilla` and connect to your raspberry-pi with the following parameters:
-        1. `Server`: `<ip-address-of-your-raspberry-pi>`
-        1. `Username`: `<your-raspberry-pi-username>` (default = "pi")
-        1. `Password`: `<your-raspberry-pi-password>` 
-        1. `Port`: `22`
-    1. Now you should be able to just drag and drop the sounds from your system to the raspberry-pi
-        - File structure should look like:
-        - `autodarts-caller/sounds/0.mp3`
-        - `autodarts-caller/sounds/1.mp3`
-        - `autodarts-caller/sounds/2.mp3`
-        - `...`
+
+#### Transfer sounds to the raspberry-pi
+
+An easy way to add the sounds is to use a programm like `FileZilla`:
+1. Download and install `FileZilla` on the system from where you connect to the raspberry-pi
+1. Open `FileZilla` and connect to your raspberry-pi with the following parameters:
+    1. `Server`: `<ip-address-of-your-raspberry-pi>`
+    1. `Username`: `<your-raspberry-pi-username>` (default = "pi")
+    1. `Password`: `<your-raspberry-pi-password>` 
+    1. `Port`: `22`
+1. Now you should be able to just drag and drop the sounds from your system to the raspberry-pi
+    - File structure should look like:
+    - `autodarts-caller/sounds/0.mp3`
+    - `autodarts-caller/sounds/1.mp3`
+    - `autodarts-caller/sounds/2.mp3`
+    - `...`
 
 ## Running 
-1. Start `autodarts` (if not already running):
-    - `autodarts`
-1. Run `autodarts-caller` install-script (maybe in a second terminal window/tab):
-    - `./install_and_run_autodarts_caller.sh`
-    - if everything's working you should see some log-output but no errors
-1. **After the first successful run you can start/stop the autodarts-caller with:**
+1. **You can start/stop the autodarts-caller with:**
     - `sudo docker start autodarts-caller`
     - `sudo docker stop autodarts-caller`
+1. Start `autodarts` (if not already running):
+    - `autodarts`
 
 ## Usage
 1. Open a browser on a device from where you want to play the sounds on
@@ -78,7 +82,7 @@ Caller-functionality for your [autodarts.io](https://github.com/autodarts/docs)-
 
 **Important:** This tool has no access to the information of your current match. It can only call the score of your thrown three darts. Neither does it now if you've just won a leg, nor does it call the remaining points.
 
-Besides that: the autodarts-api is not stable yet and can change anytime. This means that this tool may stop working after a new release of autodarts.
+**Besides that: the autodarts-api is not stable yet and can change anytime. This means that this tool may stop working after a new release of autodarts.**
 
 ## Updating
 
