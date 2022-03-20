@@ -21,7 +21,7 @@ The following guide is designed for the raspberry-pi but this is no hard require
     - `cd autodarts-caller/`
 1. Make installation-script executable: 
     - `chmod +x install_autodarts_caller.sh`
-1. Run `autodarts-caller` install-script (maybe in a second terminal window/tab):
+1. Run `autodarts-caller` install-script:
     - `./install_autodarts_caller.sh`
 
 ### Add caller sounds 
