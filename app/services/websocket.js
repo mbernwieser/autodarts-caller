@@ -9,7 +9,7 @@ export default class WebsocketService extends Service {
 
   @tracked socket = null;
   @tracked isInitializing = false;
-  @tracked pointsCalled = false;
+  @tracked turnCompleted = false;
 
   initializeSocket(ip) {
     this.isInitializing = true;
@@ -73,11 +73,11 @@ export default class WebsocketService extends Service {
     }
 
     if (throws.length === 1) {
-      // reset pointsCalled to prevent multiple calls because of an aborted takeout
-      this.pointsCalled = false;
+      // reset turnCompleted to prevent multiple calls because of an aborted takeout
+      this.turnCompleted = false;
     }
 
-    if (this.pointsCalled) {
+    if (this.turnCompleted) {
       return;
     }
 
@@ -87,16 +87,8 @@ export default class WebsocketService extends Service {
     pluginEvent.throws = throws;
     window.dispatchEvent(pluginEvent);
 
-    if (throws.length !== 3) {
-      return;
+    if (throws.length === 3) {
+      this.turnCompleted = true;
     }
-
-    const points = throws.reduce(
-      (sum, t) => (sum += t.segment.number * t.segment.multiplier),
-      0
-    );
-
-    this.soundService.playAudio(points);
-    this.pointsCalled = true;
   }
 }

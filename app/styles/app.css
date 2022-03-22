@@ -1,0 +1,9 @@
+.plugin-checkboxes {
+  display: flex;
+  column-gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.plugin-checkbox {
+  cursor: pointer;
+}

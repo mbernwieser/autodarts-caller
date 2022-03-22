@@ -54,14 +54,11 @@
     Plugins:
   </p>
   <div>
-    <fieldset>
+    <fieldset class="plugin-checkboxes">
       {{#each this.pluginService.registeredPlugins as |pluginName|}}
-        <label for="switch">
+        <label class="plugin-checkbox">
           <input
             type="checkbox"
-            id="switch"
-            name="switch"
-            role="switch"
             checked={{get this.pluginService.pluginStates pluginName}}
             {{on 'change' (fn this.pluginService.togglePlugin pluginName)}}
           />
