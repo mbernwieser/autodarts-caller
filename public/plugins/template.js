@@ -13,6 +13,7 @@
     //console.log(event);
     //event.notificationService.success('Throw registered!');
     //event.soundService.playAudio('your-sound-file.mp3');
+    //event.videoService.playVideo('your-video-file.mp4');
   });
 
   // -------------- DO NOT CHANGE ANYTHING BELOW HERE ---------------------

@@ -8,7 +8,8 @@ The following guide is designed for the raspberry-pi but this is no hard require
 
 ### Install docker and autodarts-caller
 1. Log-in to your raspberry-pi via ssh
-1. Go to your home-directory: `cd ~`
+1. Go to your home-directory: 
+    - `cd ~`
 1. Install `docker` (we use docker to easily start a webserver on which we run the caller-app):
     - `curl -fsSL https://get.docker.com | sh`
 1. Check if installation was successful by running a hello-world image: 
@@ -53,6 +54,12 @@ An easy way to add the sounds is to use a programm like `FileZilla`:
     - `autodarts-caller/sounds/2.mp3`
     - `...`
 
+### Add video files
+1. Video files can be added to `autodarts-caller/videos/`
+1. All video files must be in .mp4 format
+1. The default video-caller plugin will look for the following video-files:
+  - 0.mp4 - 180.mp4
+
 ## Running 
 1. **You can start/stop the autodarts-caller with:**
     - `sudo docker start autodarts-caller`
@@ -65,7 +72,7 @@ An easy way to add the sounds is to use a programm like `FileZilla`:
 1. Go to: `<ip-of-your-raspberry-pi>:8080`
     - you can copy the ip-address from the board-manager url
     - e.g. `192.168.178.73:8080`
-1. Now you should see the Autodarts-Caller web-ui (see screenshot below)
+1. Now you should see the `autodarts-caller` web-ui (see screenshot below)
 1. In the `Autodarts-IP:`-field you should enter the IP where autodarts is running (propably the same `<ip-of-your-raspberry-pi>`)
     - Enter the IP without `http` or `/`
     - you can copy the ip-address from the board-manager url
@@ -75,8 +82,7 @@ An easy way to add the sounds is to use a programm like `FileZilla`:
 
 |                     ![screenshot-ui](screenshot_ui.png)                     |
 | :--------------------------------------------------------------: |
-| _Screenshot from Autodarts-Caller Web-UI_ |
-
+| _Screenshot from `autodarts-caller` Web-UI_ |
 
 ## Drawbacks
 
@@ -86,7 +92,30 @@ An easy way to add the sounds is to use a programm like `FileZilla`:
 
 ## Updating
 
-tbd
+**Attention!** This update-process will override any changes you made to `autodarts-caller` files which are provided by default. This especially goes for sound-files (sound-effects) and default-plugins.
+
+**Therefore: always create new files for your customizations! Those will not be overridden during this update process. For example your own caller-files (1.mp3, 2.mp3, etc.) will not be touched.**
+
+To update `autodarts-caller` run those commands:
+
+1. Log-in to your raspberry-pi via ssh
+1. Go to your home-directory: 
+    - `cd ~`
+1. (Optional) if you want to backup the old files. Copy the old folder first
+    - `cp autodarts-caller/ autodarts-caller-backup-DATE_OF_BACKUP/`
+1. Remove old zip-file
+    - `rm autodarts-caller.zip`
+1. Download new version (in this example: 1.1.0, for all available versions see: [Releases](https://github.com/mbernwieser/autodarts-caller/releases))
+    - `wget https://github.com/mbernwieser/autodarts-caller/releases/download/1.1.0/autodarts-caller.zip`
+1. Unzip new version
+    - **This will replace all files which are provided by default by `autodarts-caller`!**
+    - **Files which were created by you will be kept! So move custom plugin-logic to new files**
+    - `unzip -o autodarts-caller.zip -d .`
+1. If you use custom plugins:
+    - Unfortunately for now you have to re-add the import of them manually in the `index.html` file
+1. Restart docker container
+    - `sudo docker restart autodarts-caller`
+1. Open `autodarts-caller` in the browser and reload the page via `Shift + F5` (Chrome) or `CTRL + F5` (Firefox) to force a reload of all files
 
 ## Extending with plugins
 
