@@ -8,7 +8,6 @@ module.exports = function (defaults) {
       exclude: ['plugins/*'],
     },
     'ember-cli-terser': {
-      enabled: true,
       exclude: ['plugins/*'],
     },
   });

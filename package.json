@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@ember/optional-features": "^2.0.0",
+    "@ember/render-modifiers": "^2.0.4",
     "@ember/test-helpers": "^2.6.0",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
@@ -42,6 +43,7 @@
     "ember-cli-notifications": "^8.0.0",
     "ember-cli-sri": "^2.1.1",
     "ember-cli-terser": "^4.0.2",
+    "ember-click-outside-modifier": "^3.0.2",
     "ember-composable-helpers": "^5.0.0",
     "ember-data": "~4.1.0",
     "ember-export-application-global": "^2.0.1",

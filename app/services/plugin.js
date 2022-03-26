@@ -3,6 +3,7 @@ import { action } from '@ember/object';
 
 export default class PluginService extends Service {
   @service('sound') soundService;
+  @service('video') videoService;
   @service notifications;
 
   initializePlugins() {
@@ -24,6 +25,7 @@ export default class PluginService extends Service {
     const event = new Event(eventName);
     event.notificationService = this.notifications;
     event.soundService = this.soundService;
+    event.videoService = this.videoService;
     return event;
   }
 

@@ -7,3 +7,39 @@
 .plugin-checkbox {
   cursor: pointer;
 }
+
+.video-overlay {
+  position: absolute;
+  background-color: rgba(20, 20, 20, 0);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color .3s, visibility .3s;
+  visibility: hidden;
+}
+
+.video-overlay.visible {
+  background-color: rgba(20, 20, 20, 0.9);
+  transition: background-color .3s, visibility .3s;
+  visibility: visible;
+}
+
+.video-container {
+  background-color: transparent;
+  width: 75%;
+  height: 75%;
+}
+
+.video-container video {
+  opacity: 1;
+}
+
+.video-container video.hiding {
+  opacity: 0;
+  transition: opacity .3s;
+}
