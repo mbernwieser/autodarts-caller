@@ -102,7 +102,7 @@ To update `autodarts-caller` run those commands:
 1. Go to your home-directory: 
     - `cd ~`
 1. *Optional / Recommended if you've added custom plugins/logic:* Create a backup of the old files
-    - `cp autodarts-caller/ autodarts-caller-backup-DATE_OF_BACKUP/`
+    - `cp -r autodarts-caller/ autodarts-caller-backup-DATE_OF_BACKUP/`
 1. Remove old zip-file
     - `rm autodarts-caller.zip`
 1. Download new version (in this example: 1.1.0, for all available versions see: [Releases](https://github.com/mbernwieser/autodarts-caller/releases))
