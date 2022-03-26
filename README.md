@@ -16,7 +16,7 @@ The following guide is designed for the raspberry-pi but this is no hard require
     - `sudo docker run --rm armhf/hello-world`
     - If you see no errors everything should be fine
 1. Download and unzip `autodarts-caller`:
-    1. `wget https://github.com/mbernwieser/autodarts-caller/releases/download/1.0.0/autodarts-caller.zip`
+    1. `wget https://github.com/mbernwieser/autodarts-caller/releases/download/1.1.0/autodarts-caller.zip`
     1. `unzip -o autodarts-caller.zip -d .`
 1. Go to the `autodarts-caller`-directory you just created:
     - `cd autodarts-caller/`
