@@ -8,5 +8,13 @@ export default class VideoOverlayComponent extends Component {
   @action
   registerVideoElement(element) {
     this.videoService.videoElement = element;
+
+    this.videoService.videoElement.addEventListener('loadedmetadata', () => {
+      this.videoService.fileNotFound = false;
+    });
+
+    this.videoService.videoElement.addEventListener('error', () => {
+      this.videoService.fileNotFound = true;
+    });
   }
 }

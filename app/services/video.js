@@ -7,15 +7,28 @@ export default class VideoService extends Service {
 
   @tracked overlayIsVisible = false;
   @tracked videoElement = null;
+  @tracked fileNotFound = false;
 
-  playVideo(filename) {
+  async playVideo(filename) {
+    this.fileNotFound = false;
+
+    this.videoElement.src = `/videos/${filename}.mp4`;
+
+    // Wait for load/error-events to fire.
+    // 404 should be received immeadiately,
+    // so it shouldn't be a problem if the
+    // loading of the video takes longer than this timeout
+    await new Promise((resolve) => setTimeout(resolve, 100));
+
+    if (this.fileNotFound) {
+      console.log(`video file not found! (path: /videos/${filename}.mp4)`);
+      return;
+    }
+
     this.videoElement.classList.remove('hiding');
     this.overlayIsVisible = true;
 
-    setTimeout(() => {
-      this.videoElement.src = `/videos/${filename}.mp4`;
-      this.videoElement.play();
-    }, 100);
+    this.videoElement.play();
 
     this.videoElement.addEventListener('ended', () => {
       this.videoElement.classList.add('hiding');
