@@ -13,7 +13,7 @@ The following guide is designed for the raspberry-pi but this is no hard require
 1. Install `docker` (we use docker to easily start a webserver on which we run the caller-app):
     - `curl -fsSL https://get.docker.com | sh`
 1. Check if installation was successful by running a hello-world image: 
-    - `sudo docker run --rm armhf/hello-world`
+    - `sudo docker run --rm arm32v7/hello-world`
     - If you see no errors everything should be fine
 1. Download and unzip `autodarts-caller`:
     1. `wget https://github.com/mbernwieser/autodarts-caller/releases/download/1.1.0/autodarts-caller.zip`
