@@ -4,6 +4,9 @@ Caller-functionality for your [autodarts.io](https://github.com/autodarts/docs)-
 
 ## Installation
 
+> [!IMPORTANT]  
+> Perhaps consider using [lbormann/autodarts-caller](https://github.com/lbormann/autodarts-caller), which offers you more functions and is better and more regularly maintained.
+
 The following guide is designed for the raspberry-pi but this is no hard requirement.
 
 ### Install docker and autodarts-caller
@@ -86,7 +89,7 @@ An easy way to add the sounds is to use a programm like `FileZilla`:
 
 ## Drawbacks
 
-**Important:** This tool has no access to the information of your current match. It can only call the score of your thrown three darts. Neither does it now if you've just won a leg, nor does it call the remaining points.
+**Important:** This tool has no access to the information of your current match. It can only call the score of your thrown three darts. Neither does it now if you've just won a leg, nor does it call the remaining points. If you want a more sophisticated caller, you should use xy [lbormann/autodarts-caller](https://github.com/lbormann/autodarts-caller)
 
 **Besides that: the autodarts-api is not stable yet and can change anytime. This means that this tool may stop working after a new release of autodarts.**
 
