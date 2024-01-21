@@ -19,7 +19,7 @@ The following guide is designed for the raspberry-pi but this is no hard require
     - `sudo docker run --rm arm32v7/hello-world`
     - If you see no errors everything should be fine
 1. Download and unzip `autodarts-caller`:
-    1. `wget https://github.com/mbernwieser/autodarts-caller/releases/download/1.1.0/autodarts-caller.zip`
+    1. `wget https://github.com/mbernwieser/autodarts-caller/releases/download/1.2.0/autodarts-caller.zip`
     1. `unzip -o autodarts-caller.zip -d .`
 1. Go to the `autodarts-caller`-directory you just created:
     - `cd autodarts-caller/`
@@ -108,8 +108,8 @@ To update `autodarts-caller` run those commands:
     - `cp -r autodarts-caller/ autodarts-caller-backup-DATE_OF_BACKUP/`
 1. Remove old zip-file
     - `rm autodarts-caller.zip`
-1. Download new version (in this example: 1.1.0, for all available versions see: [Releases](https://github.com/mbernwieser/autodarts-caller/releases))
-    - `wget https://github.com/mbernwieser/autodarts-caller/releases/download/1.1.0/autodarts-caller.zip`
+1. Download new version (in this example: 1.2.0, for all available versions see: [Releases](https://github.com/mbernwieser/autodarts-caller/releases))
+    - `wget https://github.com/mbernwieser/autodarts-caller/releases/download/1.2.0/autodarts-caller.zip`
 1. Unzip new version
     - **This will replace all files which are provided by default by `autodarts-caller`!**
     - **Files which were created by you will be kept! So move custom plugin-logic to new files**
